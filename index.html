@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Larper College — Campus Activity Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="aurora-streak streak-1"></div>
+    <div class="aurora-streak streak-2"></div>
+    <div class="aurora-streak streak-3"></div>
+  </div>
+
+  <header class="navbar glass-panel">
+    <div class="nav-brand" onclick="showLandingPage()">
+      <span class="logo-badge">LC</span>
+      <div>
+        <h1>Larper College</h1>
+        <p>Annual Sports & Cultural Activity OS 2026</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <span id="active-role-badge" class="badge hidden"></span>
+      <button id="home-btn" class="btn btn-secondary hidden" onclick="showLandingPage()">
+        Switch Role
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. LANDING PAGE -->
+    <div id="landing-page" class="landing-scroll-wrapper">
+      <section class="hero-stage">
+        <div class="hero-floating-vectors" aria-hidden="true">
+          <svg class="float-vec vec-left" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="80" stroke="rgba(0,210,255,0.22)" stroke-width="1.5"/>
+            <ellipse cx="100" cy="100" rx="80" ry="32" stroke="rgba(0,210,255,0.22)" stroke-width="1.2"/>
+            <ellipse cx="100" cy="100" rx="32" ry="80" stroke="rgba(0,81,255,0.35)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="minimal-pill">
+          <span class="live-dot"></span> ANNUAL INTER-COLLEGIATE PORTAL 2026
+        </div>
+        <h1 class="warp-title" id="warp-heading" aria-label="Larper College">
+          <span class="warp-word"><span class="warp-char">L</span><span class="warp-char">a</span><span class="warp-char">r</span><span class="warp-char">p</span><span class="warp-char">e</span><span class="warp-char">r</span></span>
+          <span class="warp-word"><span class="warp-char">C</span><span class="warp-char">o</span><span class="warp-char">l</span><span class="warp-char">l</span><span class="warp-char">e</span><span class="warp-char">g</span><span class="warp-char">e</span></span>
+        </h1>
+        <p class="hero-subtext">Real-time arena schedules, conflict-free student registration, and live host telemetry.</p>
+        <div class="vector-decor-row">
+          <svg class="vector-badge" viewBox="0 0 120 40" fill="none">
+            <rect x="1" y="1" width="118" height="38" rx="19" stroke="rgba(0,210,255,0.35)" stroke-dasharray="4 4"/>
+            <circle cx="22" cy="20" r="6" fill="#00d2ff"/>
+            <path d="M40 20H98" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="vector-caption">SCROLL DOWN TO ENTER ACCESS CODE</span>
+          <svg class="vector-badge" viewBox="0 0 120 40" fill="none">
+            <rect x="1" y="1" width="118" height="38" rx="19" stroke="rgba(0,210,255,0.35)"/>
+            <path d="M25 20L35 12V28L25 20Z" fill="#00d2ff"/>
+            <circle cx="95" cy="20" r="6" stroke="#00d2ff" stroke-width="2"/>
+          </svg>
+        </div>
+        <a href="#code-gate-section" class="scroll-indicator">
+          <span>Scroll to Identity Gate</span>
+          <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        </a>
+      </section>
+
+      <section id="code-gate-section" class="code-gate-stage">
+        <div class="gate-glass-card">
+          <span class="pill">Identity Gate</span>
+          <h2 class="gate-heading">Enter Your Code</h2>
+          <p class="muted">Type <strong>STUDENT</strong>, <strong>VISITOR</strong>, or <strong>ADMIN</strong> to unlock your portal</p>
+          <div class="code-slots-container" id="code-slots-display" onclick="document.getElementById('access-code').focus()">
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+            <div class="code-slot"><span>•</span></div>
+          </div>
+          <div class="form-group pill-input-wrapper">
+            <input type="text" id="access-code" maxlength="7" placeholder="Type STUDENT, VISITOR, or ADMIN..." autocomplete="off" oninput="updateCodeSlotsUI(this.value)" onkeydown="if(event.key === 'Enter') handleCodeSubmit()" />
+          </div>
+          <div class="quick-codes">
+            <span>Quick Select:</span>
+            <button type="button" class="btn-chip" onclick="syncSlotQuickCode('STUDENT')">STUDENT</button>
+            <button type="button" class="btn-chip" onclick="syncSlotQuickCode('VISITOR')">VISITOR</button>
+            <button type="button" class="btn-chip" onclick="syncSlotQuickCode('ADMIN')">ADMIN</button>
+          </div>
+        </div>
+        <div class="corner-vector-art">
+          <svg viewBox="0 0 180 180" fill="none">
+            <circle cx="90" cy="90" r="72" stroke="rgba(0, 210, 255, 0.22)" stroke-width="1.5" stroke-dasharray="6 6"/>
+            <circle cx="90" cy="90" r="48" stroke="rgba(0, 102, 255, 0.4)" stroke-width="1.5"/>
+            <path d="M90 10V170M10 90H170" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1"/>
+            <polygon points="90,55 120,110 60,110" stroke="#00d2ff" stroke-width="1.5" fill="rgba(0,210,255,0.08)"/>
+          </svg>
+          <span>VECTOR.SYS // LARPER-2026</span>
+        </div>
+        <button type="button" class="floating-blue-submit" onclick="handleCodeSubmit()" title="Submit Access Code">
+          <span class="submit-label">ENTER</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </section>
+    </div>
+
+    <!-- 2. STUDENT VIEW -->
+    <div id="student-view" class="hidden student-layout">
+      <aside class="semi-circle-dock" id="semi-nav-dock" aria-label="Primary Wheel Navigation">
+        <div class="semi-wheel-core" id="semi-wheel">
+          <div class="wheel-center-hub"><span>LC</span></div>
+          <button type="button" class="wheel-segment seg-1" onclick="switchStudentSubTab('telemetry', this)"><span class="seg-text">Map</span></button>
+          <button type="button" class="wheel-segment seg-2 active-segment" onclick="switchStudentSubTab('events', this)"><span class="seg-text">Events</span></button>
+          <button type="button" class="wheel-segment seg-3" onclick="switchStudentSubTab('contact', this)"><span class="seg-text">Contact</span></button>
+          <button type="button" class="wheel-segment seg-4" onclick="switchStudentSubTab('telemetry', this)"><span class="seg-text">Announcements</span></button>
+          <button type="button" class="wheel-segment seg-5" onclick="switchStudentSubTab('telemetry', this)"><span class="seg-text">To-do list</span></button>
+        </div>
+        <div class="wheel-hint">Hover & Scroll Wheel</div>
+      </aside>
+
+      <div class="student-stage-content">
+        <div id="student-events-subview">
+          <div class="section-header glass-panel">
+            <div>
+              <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.35rem;">
+                <span class="pill">Events</span><span class="badge">Published</span>
+              </div>
+              <h2>Annual Sports Day 2026</h2>
+              <p class="muted" id="student-welcome-text">Oct 15, 2026 • Coordinator: Prof. R. Sharma — Select an event cube below to register.</p>
+            </div>
+            <div class="filter-group">
+              <button class="btn btn-chip active-filter" id="filter-All" onclick="loadStudentEvents('All')">All</button>
+              <button class="btn btn-chip" id="filter-Ongoing" onclick="loadStudentEvents('Ongoing')">Ongoing</button>
+              <button class="btn btn-chip" id="filter-Published" onclick="loadStudentEvents('Published')">Published</button>
+              <button class="btn btn-chip" id="filter-Completed" onclick="loadStudentEvents('Completed')">Completed</button>
+            </div>
+          </div>
+          <div id="student-events-grid" class="events-grid"></div>
+        </div>
+
+        <div id="student-contact-subview" class="hidden">
+          <div class="section-header glass-panel">
+            <div>
+              <span class="pill">Campus Directory</span>
+              <h2>Contact Command Center</h2>
+              <p class="muted">Direct lines for Larper College Event Coordinators, Hosts, and Stay Managers.</p>
+            </div>
+          </div>
+          <div class="contact-cards-stack">
+            <div class="contact-pill-card">
+              <div class="contact-avatar-orb"><img src="https://ui-avatars.com/api/?name=Prof+Sharma&background=f9182f&color=fff&size=128&bold=true" alt="Prof. R. Sharma" /></div>
+              <div class="contact-blue-body">
+                <div class="contact-role-tag">Event Coordinator</div>
+                <h3>Prof. R. Sharma</h3>
+                <p>Overall Annual Sports Day 2026 & Arena Scheduling Lead</p>
+                <div class="contact-links"><span>📞 +91 98450 11204</span><span>✉️ r.sharma@larper.edu</span></div>
+              </div>
+            </div>
+            <div class="contact-pill-card">
+              <div class="contact-avatar-orb"><img src="https://ui-avatars.com/api/?name=Coach+Meera&background=f9182f&color=fff&size=128&bold=true" alt="Coach Meera Nair" /></div>
+              <div class="contact-blue-body">
+                <div class="contact-role-tag">Event Host</div>
+                <h3>Coach Meera Nair</h3>
+                <p>Track & Field Heats, Check-in Desk & Equipment Verification</p>
+                <div class="contact-links"><span>📞 +91 98450 22890</span><span>✉️ coach@campus.edu</span></div>
+              </div>
+            </div>
+            <div class="contact-pill-card">
+              <div class="contact-avatar-orb"><img src="https://ui-avatars.com/api/?name=Rohan+Kapoor&background=f9182f&color=fff&size=128&bold=true" alt="Rohan Kapoor" /></div>
+              <div class="contact-blue-body">
+                <div class="contact-role-tag">Stay Manager</div>
+                <h3>Rohan Kapoor</h3>
+                <p>Guest Hospitality, Visitor Passes & Campus Accommodation</p>
+                <div class="contact-links"><span>📞 +91 98450 77412</span><span>✉️ stay.support@larper.edu</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="student-telemetry-subview" class="hidden">
+          <div class="section-header glass-panel">
+            <div>
+              <span class="pill">Live Command Feed</span>
+              <h2>Announcements, Progress & Timeline</h2>
+              <p class="muted">Real-time arena broadcasts, heat progression, and venue conflict monitoring.</p>
+            </div>
+            <button class="btn btn-chip active-filter" onclick="switchStudentSubTab('events', document.querySelector('.seg-2'))">← Back to Events Grid</button>
+          </div>
+          <div class="telemetry-bento-grid">
+            <div class="glass-panel bento-box">
+              <div class="bento-header"><h3>Announcement</h3><span class="btn-chip">+ Live Broadcasts</span></div>
+              <div class="announcement-list">
+                <div class="announcement-item"><div class="ann-icon">🕒</div><div><p class="ann-text"><strong>Notice:</strong> Relay schedule shifted by 15 mins due to rain. Track A affected.</p><span class="ann-meta">Sent 5m ago by Admin</span></div></div>
+                <div class="announcement-item"><div class="ann-icon">📢</div><div><p class="ann-text"><strong>Volunteers:</strong> Reporting for Football Match 1 please gather at Main Field.</p><span class="ann-meta">Sent 30m ago by Staff</span></div></div>
+              </div>
+            </div>
+            <div class="glass-panel bento-box">
+              <h3>Progress & Real-Time</h3>
+              <p class="muted" style="margin-top:0.35rem; color:#38bdf8; font-weight:600;">● Activity Progress</p>
+              <h4 style="font-size:1.15rem; margin-top:0.2rem;">100m Sprint Heats</h4>
+              <p class="muted" style="font-size:0.82rem;">08:00 AM ~ 09:30 AM • Running Track A</p>
+              <div class="progress-stepper">
+                <div class="step-node done"><div class="dot"></div><span>Preparation</span></div>
+                <div class="step-node done"><div class="dot"></div><span>Check-in</span></div>
+                <div class="step-node active-live"><div class="dot"></div><span><strong>Heats Live</strong></span></div>
+                <div class="step-node"><div class="dot"></div><span>Results Feed</span></div>
+                <div class="step-node"><div class="dot"></div><span>Finals Scheduled</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ADMIN VIEW -->
+    <div id="admin-view" class="hidden">
+      <div id="admin-login-section" class="card landing-card glass-panel">
+        <span class="pill">Host Portal</span>
+        <h2>Admin / Host Login</h2>
+        <p class="muted">Sign in to manage event statuses, requirements, and student check-ins.</p>
+        <form onsubmit="handleAdminLogin(event)">
+          <div class="form-group"><label for="admin-email">Host Email</label><input type="email" id="admin-email" value="coach@campus.edu" required /></div>
+          <div class="form-group"><label for="admin-password">Password</label><input type="password" id="admin-password" value="coach123" required /></div>
+          <button type="submit" class="btn btn-primary full-width">Login to Dashboard</button>
+        </form>
+      </div>
+
+      <div id="admin-dashboard-section" class="hidden">
+        <div class="section-header glass-panel">
+          <div>
+            <h2>Host Management Dashboard</h2>
+            <p class="muted">Create events, update status (Draft → Published → Ongoing → Completed), and mark check-ins.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="loadAdminDashboard()">↻ Refresh All Events</button>
+        </div>
+
+        <div class="card create-event-card glass-panel">
+          <h3>+ Create New Activity (Live Demo)</h3>
+          <form onsubmit="handleCreateActivity(event)" class="create-grid">
+            <input type="text" id="new-title" placeholder="Event Title (e.g. Tug of War)" required />
+            <input type="text" id="new-category" placeholder="Category (e.g. Sports)" value="Sports" required />
+            <input type="text" id="new-venue" placeholder="Venue (e.g. Main Ground)" required />
+            <select id="new-part-type"><option value="Individual">Individual</option><option value="Team">Team</option></select>
+            <input type="datetime-local" id="new-start" value="2026-03-15T16:00" required />
+            <input type="datetime-local" id="new-end" value="2026-03-15T17:00" required />
+            <input type="text" id="new-instructions" placeholder="Participant Instructions" value="Report 15 mins early." required />
+            <input type="text" id="new-req-item" placeholder="Equipment Item (e.g. Rope)" value="Rope" />
+            <button type="submit" class="btn btn-primary">Create Activity</button>
+          </form>
+        </div>
+        <div id="admin-events-container" class="admin-events-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Warp Text Physics
+    const warpChars = document.querySelectorAll('.warp-char');
+    document.addEventListener('mousemove', (e) => {
+      warpChars.forEach((char) => {
+        const rect = char.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+        const maxDist = 220;
+        if (dist < maxDist) {
+          const factor = 1 - dist / maxDist;
+          const liftY = -18 * factor;
+          const scale = 1 + 0.28 * factor;
+          const skew = ((e.clientX - cx) / maxDist) * 14;
+          char.style.transform = `translateY(${liftY}px) scale(${scale}) skewX(${skew}deg)`;
+          char.style.color = '#00d2ff';
+          char.style.textShadow = '0 0 28px rgba(0, 210, 255, 0.85)';
+        } else {
+          char.style.transform = 'translateY(0) scale(1) skewX(0deg)';
+          char.style.color = '';
+          char.style.textShadow = '';
+        }
+      });
+    });
+
+    // Code-Slots UI Sync
+    const codeInputEl = document.getElementById('access-code');
+    const slotBoxes = document.querySelectorAll('#code-slots-display .code-slot');
+
+    function updateCodeSlotsUI(val) {
+      const clean = (val || '').toUpperCase();
+      slotBoxes.forEach((box, idx) => {
+        const ch = clean[idx];
+        const span = box.querySelector('span');
+        if (span) {
+          if (ch) {
+            span.textContent = ch;
+            box.classList.add('slot-filled');
+          } else {
+            span.textContent = '•';
+            box.classList.remove('slot-filled');
+          }
+        }
+      });
+    }
+
+    if (codeInputEl) {
+      codeInputEl.addEventListener('input', (e) => { updateCodeSlotsUI(e.target.value); });
+    }
+
+    function syncSlotQuickCode(codeStr) {
+      if (codeInputEl) {
+        codeInputEl.value = codeStr;
+        updateCodeSlotsUI(codeStr);
+        codeInputEl.focus();
+      }
+    }
+
+    // Sub-View Switcher
+    function switchStudentSubTab(tabName, btnEl) {
+      document.querySelectorAll('.wheel-segment').forEach(s => s.classList.remove('active-segment'));
+      if (btnEl) btnEl.classList.add('active-segment');
+
+      const eventsSub = document.getElementById('student-events-subview');
+      const contactSub = document.getElementById('student-contact-subview');
+      const telemetrySub = document.getElementById('student-telemetry-subview');
+
+      eventsSub.classList.add('hidden');
+      contactSub.classList.add('hidden');
+      telemetrySub.classList.add('hidden');
+
+      if (tabName === 'events') {
+        eventsSub.classList.remove('hidden');
+        if (typeof loadStudentEvents === 'function') loadStudentEvents('All');
+      } else if (tabName === 'contact') {
+        contactSub.classList.remove('hidden');
+      } else {
+        telemetrySub.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
